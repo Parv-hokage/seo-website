@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Verra Coffee Atelier</title>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;1,6..96,400&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#DDE2D9;--surface:#E9ECE4;--ink:#2B1A12;--muted:#5D5148;--copper:#A5522B;--line:#2B1A1233;--bag:#2B1A12;--bagink:#E9ECE4;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1B1512;--surface:#261D18;--ink:#EDE6DA;--muted:#B3A596;--copper:#D98B5F;--line:#EDE6DA33}}
+:root[data-theme="dark"]{--bg:#1B1512;--surface:#261D18;--ink:#EDE6DA;--muted:#B3A596;--copper:#D98B5F;--line:#EDE6DA33}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.6 Figtree,system-ui,sans-serif;overflow-x:hidden}
+h1,h2,h3,.serif{font-family:"Bodoni Moda",Georgia,serif;font-weight:400;line-height:1.05;letter-spacing:-.01em}
+a{color:inherit}:focus-visible{outline:2px solid var(--copper);outline-offset:3px}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+#glow{position:fixed;width:520px;height:520px;border-radius:50%;pointer-events:none;background:radial-gradient(#A5522B28,#0000 65%);transform:translate(-50%,-50%);left:50%;top:30%;z-index:0;transition:left .6s ease-out,top .6s ease-out}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;justify-content:space-between;align-items:center;padding:20px 24px;max-width:1160px;margin:0 auto;backdrop-filter:blur(14px);background:color-mix(in srgb,var(--bg) 70%,transparent)}
+.logo{font:italic 1.6rem "Bodoni Moda",serif;text-decoration:none}
+nav{display:flex;gap:26px;font-size:.95rem}
+nav a{text-decoration:none;color:var(--muted);position:relative;padding:4px 0}
+nav a:after{content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;background:var(--copper);transform:scaleX(0);transform-origin:left;transition:transform .35s}
+nav a:hover:after,nav a.on:after{transform:scaleX(1)}nav a.on{color:var(--ink)}
+main{position:relative;z-index:1}
+.page{display:none}.page.show{display:block;animation:in .7s cubic-bezier(.2,.7,.2,1)}
+@keyframes in{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding:48px 0 80px}
+h1{font-size:clamp(2.7rem,6vw,5.4rem)}
+#rot{display:inline-block;font-style:italic;color:var(--copper);transition:opacity .4s,transform .4s}
+#rot.out{opacity:0;transform:translateY(-14px)}
+.lede{max-width:46ch;margin:24px 0 32px;color:var(--muted);font-size:1.12rem}
+.btn{display:inline-block;background:var(--ink);color:var(--bg);padding:15px 30px;border-radius:999px;text-decoration:none;border:0;cursor:pointer;font:500 1rem Figtree,sans-serif;transition:background .25s,transform .25s}
+.btn:hover{background:var(--copper);transform:translateY(-2px)}
+.btn.ghost{background:none;color:var(--ink);border:1px solid var(--line);margin-left:10px}
+.stage{display:flex;justify-content:center;perspective:900px;position:relative}
+.steam{position:absolute;top:-70px;left:50%;width:120px;height:90px;transform:translateX(-50%);overflow:visible}
+.steam path{fill:none;stroke:var(--copper);stroke-width:3;stroke-linecap:round;opacity:0;animation:steam 3.2s infinite ease-in-out}
+.steam path:nth-child(2){animation-delay:1s}.steam path:nth-child(3){animation-delay:2s}
+@keyframes steam{0%{opacity:0;transform:translateY(30px)}30%{opacity:.7}100%{opacity:0;transform:translateY(-20px)}}
+.bag{width:min(320px,100%);aspect-ratio:3/4.1;border-radius:10px 10px 18px 18px;padding:34px 28px;display:flex;flex-direction:column;justify-content:space-between;position:relative;box-shadow:0 40px 60px -30px #0008;transition:background .5s,color .5s,transform .2s;animation:float 6s ease-in-out infinite;background:var(--bag);color:var(--bagink)}
+.bag:before{content:"";position:absolute;top:0;left:0;right:0;height:26px;background:repeating-linear-gradient(90deg,#0000 0 6px,#0002 6px 7px);border-radius:10px 10px 0 0}
+@keyframes float{50%{translate:0 -12px}}
+.bag .brand{font:italic 1.1rem "Bodoni Moda",serif;opacity:.8;margin-top:14px}
+.bag .bname{font:400 2.1rem/1.05 "Bodoni Moda",serif;word-break:break-word}
+.bag .meta{font-size:.82rem;display:grid;gap:4px;border-top:1px solid currentColor;padding-top:14px}
+.marq{overflow:hidden;border-block:1px solid var(--line);padding:18px 0;white-space:nowrap}
+.marq div{display:inline-block;animation:slide 32s linear infinite;font:italic 1.9rem "Bodoni Moda",serif;color:var(--muted)}
+.marq span{margin:0 26px}.marq i{color:var(--copper);font-style:normal}
+@keyframes slide{to{transform:translateX(-50%)}}
+section{padding:88px 0}
+h2{font-size:clamp(2.1rem,4.4vw,3.4rem);max-width:20ch}
+.sub{color:var(--muted);max-width:54ch;margin-top:16px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:50px}
+.stats b{display:block;font:400 3.6rem "Bodoni Moda",serif;color:var(--copper)}
+.stats span{color:var(--muted)}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
+.card{padding:32px;border-radius:18px;background:var(--surface);transition:transform .3s,box-shadow .3s}
+.card:hover{transform:translateY(-6px);box-shadow:0 24px 40px -24px #0006}
+.card h3{font-size:1.6rem;margin-bottom:8px}.card p{color:var(--muted);font-size:.97rem}
+.card.dark{background:var(--ink);color:var(--bg)}.card.dark p{color:inherit;opacity:.8}
+.builder{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:48px;align-items:start}
+fieldset{border:0;padding:0;margin-bottom:28px}legend{font-weight:600;margin-bottom:12px}
+.opts{display:flex;flex-wrap:wrap;gap:10px}.opts input{position:absolute;opacity:0}
+.opts label{display:inline-block;padding:11px 20px;border:1px solid var(--line);border-radius:999px;cursor:pointer;transition:.2s}
+.opts label:hover{border-color:var(--copper)}
+.opts input:checked+label{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.opts input:focus-visible+label{outline:2px solid var(--copper);outline-offset:3px}
+input[type=text],input[type=email]{width:100%;padding:14px 18px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink);font:inherit}
+.summary{background:var(--surface);padding:32px;border-radius:18px;position:sticky;top:96px}
+.summary h3{font-size:1.9rem}.notes{margin:12px 0 22px;color:var(--muted);min-height:3.2em}
+.price{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--line);padding-top:18px;margin-bottom:22px}
+.price strong{font:400 2.2rem "Bodoni Moda",serif}.msg{margin-top:14px;color:var(--copper);min-height:1.5em}
+.bars{margin-top:20px;display:grid;gap:10px;font-size:.88rem}
+.bar{display:grid;grid-template-columns:80px 1fr;align-items:center;gap:12px}
+.bar i{display:block;height:6px;border-radius:3px;background:var(--line);overflow:hidden}
+.bar i:after{content:"";display:block;height:100%;width:var(--w);background:var(--copper);transform:scaleX(0);transform-origin:left;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.vis .bar i:after{transform:scaleX(1)}
+.tl{position:relative;margin-top:56px;padding-left:36px}
+.tl:before{content:"";position:absolute;left:7px;top:0;bottom:0;width:2px;background:var(--line)}
+.tl .fill{position:absolute;left:7px;top:0;width:2px;height:var(--p,0%);background:var(--copper)}
+.tl div.s{position:relative;padding-bottom:44px;max-width:56ch}
+.tl div.s:before{content:"";position:absolute;left:-36px;top:6px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:2px solid var(--copper)}
+.tl h3{font-size:1.6rem}.tl p{color:var(--muted)}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .8s,transform .8s}.rv.vis{opacity:1;transform:none}
+.freq{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.freq label{display:block;border:1px solid var(--line);border-radius:18px;padding:26px;cursor:pointer;transition:.25s}
+.freq input{position:absolute;opacity:0}
+.freq input:checked+label{background:var(--ink);color:var(--bg);transform:translateY(-6px)}
+.freq h3{font-size:1.5rem}.freq .p{font:2rem "Bodoni Moda",serif;margin:8px 0}
+.freq input:focus-visible+label{outline:2px solid var(--copper);outline-offset:3px}
+.row{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}.row input{flex:1;min-width:220px}
+footer{border-top:1px solid var(--line);padding:44px 24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;color:var(--muted);font-size:.93rem;max-width:1160px;margin:0 auto;position:relative;z-index:1}
+@media (max-width:860px){.hero,.builder,.stats,.grid3,.freq{grid-template-columns:1fr}.hero{gap:60px}nav{gap:14px;font-size:.84rem}header{flex-direction:column;gap:8px}.summary{position:static}section{padding:64px 0}#glow{display:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="glow"></div>
+<header>
+  <a class="logo" href="#/">Verra</a>
+  <nav id="nav"><a href="#/build">Build a blend</a><a href="#/origins">Origins</a><a href="#/story">Our roast</a><a href="#/subscribe">Subscribe</a></nav>
+</header>
+<main>
+
+<div class="page" id="p-home">
+  <div class="wrap hero">
+    <div>
+      <h1>Your <span id="rot">morning</span> coffee, blended by you.</h1>
+      <p class="lede">Choose the origin, the roast and the grind. We roast to order in small batches and ship within 48 hours, in a bag with your name on it.</p>
+      <a class="btn" href="#/build">Build your blend</a><a class="btn ghost" href="#/story">See how we roast</a>
+    </div>
+    <div class="stage" id="stage">
+      <svg class="steam" viewBox="0 0 120 90"><path d="M30 80c-14-16 14-26 0-44"/><path d="M60 84c-14-16 14-26 0-44"/><path d="M90 80c-14-16 14-26 0-44"/></svg>
+      <div class="bag" id="tilt"><div class="brand">Verra Coffee Atelier</div><div class="bname">The Morning Blend</div><div class="meta"><span>Origin Huila, Colombia</span><span>Roast Medium</span><span>Roasted to order</span></div></div>
+    </div>
+  </div>
+  <div class="marq"><div id="marq"></div></div>
+  <section><div class="wrap">
+    <h2 class="rv">Small batches, made for one person at a time</h2>
+    <div class="stats rv"><div><b data-n="48">0</b><span>hours from roast to your door</span></div><div><b data-n="3">0</b><span>single origins, each traced to its farm</span></div><div><b data-n="96">0</b><span>possible blends before you name yours</span></div></div>
+    <div class="grid3">
+      <div class="card rv"><h3>Pick</h3><p>Three origins, three roast levels and four grinds, matched to how you brew.</p></div>
+      <div class="card dark rv"><h3>Name</h3><p>Your blend gets your name on the label. Gift it, or keep it for the shelf.</p></div>
+      <div class="card rv"><h3>Repeat</h3><p>Save it and we'll roast it again on your schedule. Skip or pause any time.</p></div>
+    </div>
+  </div></section>
+</div>
+
+<div class="page" id="p-build"><div class="wrap"><section>
+  <h2>Design your own coffee</h2>
+  <p class="sub">Every choice updates your bag and your tasting notes. Nothing is roasted until you order.</p>
+  <div class="builder">
+    <div>
+      <fieldset><legend>Origin</legend><div class="opts" id="g-origin"></div></fieldset>
+      <fieldset><legend>Roast</legend><div class="opts" id="g-roast"></div></fieldset>
+      <fieldset><legend>Grind</legend><div class="opts" id="g-grind"></div></fieldset>
+      <fieldset><legend>Bag size</legend><div class="opts" id="g-size"></div></fieldset>
+      <fieldset><legend><label for="nm">Name on the bag</label></legend><input type="text" id="nm" maxlength="24" value="The Morning Blend"></fieldset>
+    </div>
+    <aside>
+      <div class="stage" style="margin-bottom:34px"><div class="bag" id="bag"><div class="brand">Verra Coffee Atelier</div><div class="bname" id="bagName"></div><div class="meta"><span id="bO"></span><span id="bR"></span><span id="bG"></span></div></div></div>
+      <div class="summary" aria-live="polite">
+        <h3 id="sTitle"></h3><p class="notes" id="sNotes"></p>
+        <div class="price"><span id="sDetail"></span><strong id="sPrice"></strong></div>
+        <button class="btn" id="order" style="width:100%">Order this blend</button><p class="msg" id="msg"></p>
+      </div>
+    </aside>
+  </div>
+</section></div></div>
+
+<div class="page" id="p-origins"><div class="wrap"><section>
+  <h2>Three origins, traced to the farm</h2>
+  <p class="sub">Each lot is tasted and scored before it earns a place in the atelier.</p>
+  <div class="grid3" id="oc"></div>
+</section></div></div>
+
+<div class="page" id="p-story"><div class="wrap"><section>
+  <h2>How your bag gets made</h2>
+  <p class="sub">Scroll through a roast day.</p>
+  <div class="tl" id="tl"><div class="fill"></div>
+    <div class="s"><h3>Green beans arrive</h3><p>Each lot is cupped, then stored cool and dry until a customer picks it.</p></div>
+    <div class="s"><h3>You place an order</h3><p>Your roast level sets the profile: temperature, time and airflow.</p></div>
+    <div class="s"><h3>Roasted in a small drum</h3><p>One batch takes about twelve minutes. We watch colour, aroma and the first crack.</p></div>
+    <div class="s"><h3>Rested for two days</h3><p>Gases settle and flavour opens up. Then we grind to your setting.</p></div>
+    <div class="s"><h3>Sealed and shipped</h3><p>Your name goes on the label, the valve goes on the bag, and it leaves within 48 hours.</p></div>
+  </div>
+</section></div></div>
+
+<div class="page" id="p-subscribe"><div class="wrap"><section>
+  <h2>Never run out</h2>
+  <p class="sub">Choose how often we roast and ship your saved blend.</p>
+  <div class="freq">
+    <div><input type="radio" name="f" id="f1"><label for="f1"><h3>Every week</h3><div class="p">Save 10%</div><p>For households that go through a bag fast.</p></label></div>
+    <div><input type="radio" name="f" id="f2" checked><label for="f2"><h3>Every two weeks</h3><div class="p">Save 10%</div><p>The most popular rhythm for one or two drinkers.</p></label></div>
+    <div><input type="radio" name="f" id="f3"><label for="f3"><h3>Every month</h3><div class="p">Save 5%</div><p>A steady supply of a coffee you love.</p></label></div>
+  </div>
+  <div class="row"><input type="email" id="em" placeholder="Your email" aria-label="Your email"><button class="btn" id="sub">Start my subscription</button></div>
+  <p class="msg" id="smsg"></p>
+</section></div></div>
+
+</main>
+<footer><span class="serif" style="font-style:italic;font-size:1.3rem;color:var(--ink)">Verra Coffee Atelier</span><span>Roasted to order. Shipped in 48 hours.</span><span>hello@verracoffee.example</span></footer>
+
+<script>
+const $=id=>document.getElementById(id);
+const D={origin:[{id:"Guji, Ethiopia",n:["jasmine","bergamot","stone fruit"],p:0,s:[92,40,70],d:"Washed heirloom varieties grown above 2,000 metres. Floral and bright, with a tea-like finish."},{id:"Huila, Colombia",n:["red apple","caramel","cacao"],p:0,s:[60,75,80],d:"Sweet and balanced. Our everyday favourite, good in any brewer."},{id:"Antigua, Guatemala",n:["dark cocoa","toasted almond","soft spice"],p:2,s:[40,95,90],d:"Volcanic soil gives a deep cocoa body and gentle spice."}],
+roast:[{id:"Light",x:"bright and delicate",bg:"#E9ECE4",ink:"#2B1A12"},{id:"Medium",x:"sweet and balanced",bg:"#A5522B",ink:"#F4EFE6"},{id:"Dark",x:"deep and smoky",bg:"#2B1A12",ink:"#E9ECE4"}],
+grind:["Whole bean","Espresso","Filter","French press"],size:[{id:"250 g",p:18,m:1},{id:"500 g",p:33,m:2},{id:"1 kg",p:60,m:4}]};
+const S={origin:1,roast:1,grind:0,size:0};
+function build(k,items){const g=$("g-"+k);items.forEach((it,i)=>{const id=k+i;g.insertAdjacentHTML("beforeend",`<span><input type="radio" name="${k}" id="${id}" ${S[k]===i?"checked":""}><label for="${id}">${it.id||it}</label></span>`);$(id).addEventListener("change",()=>{S[k]=i;render()})})}
+["origin","roast","grind","size"].forEach(k=>build(k,D[k]));
+function render(){const o=D.origin[S.origin],r=D.roast[S.roast],sz=D.size[S.size],gr=D.grind[S.grind],name=$("nm").value.trim()||"Untitled blend",b=$("bag");
+b.style.background=r.bg;b.style.color=r.ink;$("bagName").textContent=name;$("bO").textContent="Origin "+o.id;$("bR").textContent="Roast "+r.id;$("bG").textContent="Grind "+gr+" · "+sz.id;
+$("sTitle").textContent=name;const n=r.id==="Dark"?[o.n[0],"roasted sugar",o.n[2]]:r.id==="Light"?[o.n[0],o.n[1],"citrus"]:o.n;
+$("sNotes").textContent="Tastes of "+n.join(", ")+". A "+r.x+" cup.";$("sDetail").textContent=r.id+" roast, "+sz.id;$("sPrice").textContent="$"+(sz.p+o.p*sz.m);$("msg").textContent=""}
+$("nm").addEventListener("input",render);
+$("order").onclick=()=>$("msg").textContent="Added. We'll roast "+($("nm").value.trim()||"your blend")+" within 48 hours of checkout.";
+$("sub").onclick=()=>{const e=$("em").value;$("smsg").textContent=/\S+@\S+\.\S+/.test(e)?"You're in. We'll email you to confirm your first roast.":"Enter a valid email address to continue."};
+render();
+$("oc").innerHTML=D.origin.map((o,i)=>`<div class="card rv ${i===0?"dark":""}"><h3>${o.id}</h3><p>${o.d}</p><div class="bars">${["Acidity","Body","Sweetness"].map((l,j)=>`<div class="bar"><span>${l}</span><i style="--w:${o.s[j]}%"></i></div>`).join("")}</div></div>`).join("");
+const notes=["jasmine","red apple","dark cocoa","bergamot","caramel","toasted almond","stone fruit","cacao","soft spice"];
+$("marq").innerHTML=[...notes,...notes].map(n=>`<span>${n}</span><i>●</i>`).join("");
+// router
+const pages={"/":"home","/build":"build","/origins":"origins","/story":"story","/subscribe":"subscribe"};
+function route(){const k=pages[location.hash.slice(1)]||"home";document.querySelectorAll(".page").forEach(p=>p.classList.toggle("show",p.id==="p-"+k));
+document.querySelectorAll("#nav a").forEach(a=>a.classList.toggle("on",a.hash==="#/"+k));window.scrollTo(0,0);setTimeout(reveal,50);if(k==="home")count()}
+addEventListener("hashchange",route);
+// reveal + counters + timeline
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("vis")}}),{threshold:.2});
+function reveal(){document.querySelectorAll(".page.show .rv").forEach(e=>io.observe(e))}
+function count(){document.querySelectorAll("[data-n]").forEach(el=>{const t=+el.dataset.n,s=performance.now();(function f(n){const p=Math.min((n-s)/1400,1);el.textContent=Math.round(t*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)})(s)})}
+addEventListener("scroll",()=>{const tl=$("tl"),r=tl.getBoundingClientRect(),p=Math.max(0,Math.min(1,(innerHeight*.6-r.top)/r.height));tl.style.setProperty("--p",p*100+"%")},{passive:true});
+// alive: rotating word, glow, tilt
+const words=["morning","espresso","pour-over","evening"];let wi=0;
+setInterval(()=>{const r=$("rot");r.classList.add("out");setTimeout(()=>{wi=(wi+1)%words.length;r.textContent=words[wi];r.classList.remove("out")},400)},2800);
+addEventListener("pointermove",e=>{const g=$("glow");g.style.left=e.clientX+"px";g.style.top=e.clientY+"px"});
+const st=$("stage"),tb=$("tilt");
+st.addEventListener("pointermove",e=>{const r=st.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;tb.style.transform=`rotateY(${x*18}deg) rotateX(${-y*18}deg)`});
+st.addEventListener("pointerleave",()=>tb.style.transform="");
+route();
+</script>
+</body>
+</html>
