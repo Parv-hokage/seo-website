@@ -7,7 +7,7 @@ export const Origins = () => {
     <div className="page" id="p-origins">
       <div className="wrap">
         <section>
-          <h2>Three origins, traced to the farm</h2>
+          <h1 className="page-h1">Three origins, traced to the farm</h1>
           <p className="sub">
             Each lot is tasted and scored before it earns a place in the atelier.
           </p>

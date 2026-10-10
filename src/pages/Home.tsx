@@ -100,10 +100,10 @@ export const Home = () => {
           <p className="lede">
             Choose the origin, the roast and the grind. We roast to order in small batches and ship within 48 hours, in a bag with your name on it.
           </p>
-          <a className="btn" href="#/build">
+          <a className="btn" href="/build">
             Build your blend
           </a>
-          <a className="btn ghost" href="#/story">
+          <a className="btn ghost" href="/story">
             See how we roast
           </a>
         </div>

@@ -18,7 +18,7 @@ export const Subscribe = () => {
     <div className="page" id="p-subscribe">
       <div className="wrap">
         <section>
-          <h2>Never run out</h2>
+          <h1 className="page-h1">Never run out</h1>
           <p className="sub">Choose how often we roast and ship your saved blend.</p>
           <div className="freq">
             {SUBSCRIPTION_FREQUENCIES.map((freq) => (

@@ -29,7 +29,7 @@ export const Story = () => {
     <div className="page" id="p-story">
       <div className="wrap">
         <section>
-          <h2>How your bag gets made</h2>
+          <h1 className="page-h1">How your bag gets made</h1>
           <p className="sub">Scroll through a roast day.</p>
           <div className="tl" id="tl" ref={timelineRef}>
             <div className="fill" />

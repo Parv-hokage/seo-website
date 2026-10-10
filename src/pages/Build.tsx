@@ -38,7 +38,7 @@ export const Build = () => {
     <div className="page" id="p-build">
       <div className="wrap">
         <section>
-          <h2>Design your own coffee</h2>
+          <h1 className="page-h1">Design your own coffee</h1>
           <p className="sub">
             Every choice updates your bag and your tasting notes. Nothing is roasted until you order.
           </p>
